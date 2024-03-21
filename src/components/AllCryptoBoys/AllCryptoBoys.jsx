@@ -16,10 +16,12 @@ const AllCryptoBoys = ({
   useEffect(() => {
     if (cryptoBoys.length !== 0) {
       if (cryptoBoys[0].metaData !== undefined) {
-        setLoading(loading);
-      } else {
         setLoading(false);
+      } else {
+        setLoading(true);
       }
+    } else {
+      setLoading(false)
     }
   }, [cryptoBoys]);
 
