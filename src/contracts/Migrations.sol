@@ -5,16 +5,20 @@ contract Migrations {
   address public owner;
   uint public last_completed_migration;
 
+  event MigrationCompleted(unit indexed completed)
+
   constructor() {
     owner = msg.sender;
   }
 
   modifier restricted() {
-    if (msg.sender == owner) _;
+     require(msg.sender == owner, "Restricted to owner only");
+     _;
   }
 
   function setCompleted(uint completed) public restricted {
     last_completed_migration = completed;
+    emit MigrationCompleted(completed)
   }
 
   function upgrade(address new_address) public restricted {
@@ -22,3 +26,5 @@ contract Migrations {
     upgraded.setCompleted(last_completed_migration);
   }
 }
+
+
