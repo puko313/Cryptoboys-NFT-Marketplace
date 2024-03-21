@@ -19,36 +19,43 @@ const Queries = (props) => {
         .getTokenOwner(tokenIdForOwner)
         .call();
       setTokenOwner(owner);
+      // Reset state after 5 seconds
       setTimeout(() => {
         setTokenOwner("");
         setTokenIdForOwner("");
       }, 5000);
-    } catch (e) {
+    } catch (error) {
+      // Handle error - display error message or provide feedback to the user
+      console.error("Error getting token owner:", error);
       setTokenIdForOwnerNotFound(true);
       setTokenIdForOwner("");
     }
   };
-
+  
   const getTokenMetadata = async (e) => {
     e.preventDefault();
     try {
       const metadata = await props.cryptoBoysContract.methods
         .getTokenMetaData(tokenIdForMetadata)
         .call();
+      // Display only part of metadata and provide a link for full metadata if needed
       setTokenMetadata(
         metadata.substr(0, 60) + "..." + metadata.slice(metadata.length - 5)
       );
       setTokenMetadataLink(metadata);
+      // Reset state after 5 seconds
       setTimeout(() => {
         setTokenMetadata("");
         setTokenIdForMetadata("");
       }, 5000);
-    } catch (e) {
+    } catch (error) {
+      // Handle error - display error message or provide feedback to the user
+      console.error("Error getting token metadata:", error);
       setTokenIdForMetadataNotFound(true);
       setTokenIdForMetadata("");
     }
   };
-
+  
   return (
     <div>
       <div className="card mt-1">
