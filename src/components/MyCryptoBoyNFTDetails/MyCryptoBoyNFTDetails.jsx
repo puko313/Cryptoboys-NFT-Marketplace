@@ -16,9 +16,6 @@ const MyCryptoBoyNFTDetails = (props) => {
         {tokenId.toNumber()}
       </p>
       <p>
-        <span className="font-weight-bold">Name</span> : {tokenName}
-      </p>
-      <p>
         <span className="font-weight-bold">Price</span> :{" "}
         {window.web3.utils.fromWei(price.toString(), "Ether")} Ξ
       </p>
