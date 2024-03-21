@@ -55,10 +55,6 @@ class CryptoBoyNFTDetails extends Component {
           )}{" "}
           Ξ
         </p>
-        <p>
-          <span className="font-weight-bold">No. of Transfers</span> :{" "}
-          {this.props.cryptoboy.numberOfTransfers.toNumber()}
-        </p>
         <div>
           {this.props.accountAddress === this.props.cryptoboy.currentOwner ? (
             <form
